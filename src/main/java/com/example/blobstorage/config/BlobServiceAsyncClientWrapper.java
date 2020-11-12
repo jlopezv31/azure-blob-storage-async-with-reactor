@@ -1,5 +1,6 @@
 package com.example.blobstorage.config;
 
+import com.azure.storage.blob.BlobAsyncClient;
 import com.azure.storage.blob.BlobServiceAsyncClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
 import com.azure.storage.common.StorageSharedKeyCredential;
@@ -23,10 +24,9 @@ public class BlobServiceAsyncClientWrapper {
         this.properties = properties;
     }
 
-    public Mono<String> getBlobFileUrl(String blobName) {
+    public Mono<BlobAsyncClient> getBlobAsyncClient(String blobName) {
         return Mono.fromCallable(() ->
                 blobServiceAsyncClient.getBlobContainerAsyncClient(properties.getContainerName())
-                        .getBlobAsyncClient(blobName)
-                        .getBlobUrl());
+                        .getBlobAsyncClient(blobName));
     }
 }
