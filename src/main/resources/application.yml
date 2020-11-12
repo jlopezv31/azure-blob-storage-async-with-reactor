@@ -1,0 +1,7 @@
+azure-connection:
+  container: 'nombre del container'
+  account: 'nombre de tu blob storage'
+  endpoint: 'enpoint de conexion al blb storage'
+  key: 'tu llave extraida desde tu cuenta azure'
+server:
+  port: 9002
